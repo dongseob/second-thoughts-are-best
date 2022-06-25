@@ -56,6 +56,8 @@ export default function Header() {
                   className="h-8 w-auto sm:h-10"
                   src="/vercel.svg"
                   alt=""
+                  height={30}
+                  width={100}
                 />
               </a>
             </Link>
@@ -190,6 +192,8 @@ export default function Header() {
                     className="h-8 w-auto"
                     src="/vercel.svg"
                     alt="Workflow"
+                    height={30}
+                    width={100}
                   />
                 </div>
                 <div className="-mr-2">

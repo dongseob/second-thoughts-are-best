@@ -1,7 +1,6 @@
-import Link from "next/Link";
+import Link from "next/link";
 import Image from "next/image";
 
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {

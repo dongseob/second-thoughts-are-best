@@ -1,23 +1,6 @@
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./components/header";
+import Footer from "./components/footer";
 import Image from "next/image";
-
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 
 const products = [
     {
@@ -25,7 +8,7 @@ const products = [
       name: 'Earthen Bottle',
       href: '#',
       price: '$48',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
+      imageSrc: '/images/45942.jpg',
       imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
@@ -33,7 +16,7 @@ const products = [
       name: 'Nomad Tumbler',
       href: '#',
       price: '$35',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+      imageSrc: '/images/45347.jpg',
       imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
@@ -41,7 +24,7 @@ const products = [
       name: 'Focus Paper Refill',
       href: '#',
       price: '$89',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
+      imageSrc: '/images/45347.jpg',
       imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
@@ -49,19 +32,19 @@ const products = [
       name: 'Machined Mechanical Pencil',
       href: '#',
       price: '$35',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
+      imageSrc: '/images/45347.jpg',
       imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },
-    // More products...
+    // More products...p
   ]
 
-function Shop() {
+function Original() {
   return (
     <div>
       <Header></Header>
 
       <div className="bg-white">
-        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
           <h2 className="sr-only">Products</h2>
 
           <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -72,6 +55,8 @@ function Shop() {
                     src={product.imageSrc}
                     alt={product.imageAlt}
                     className="w-full h-full object-center object-cover group-hover:opacity-75"
+                    width={1000}
+                    height={1000}
                   />
                 </div>
                 <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
@@ -89,4 +74,4 @@ function Shop() {
   );
 }
 
-export default Shop;
+export default Original;

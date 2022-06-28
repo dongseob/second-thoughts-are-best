@@ -1,24 +1,17 @@
-// import Link from "next/Link";
+import Link from "next/Link";
 import Image from "next/image";
 
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
-  BookmarkAltIcon,
-  CalendarIcon,
   ChartBarIcon,
   CursorClickIcon,
   MenuIcon,
   PhoneIcon,
   PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
   XIcon,
 } from '@heroicons/react/outline'
-import { ChevronDownIcon } from '@heroicons/react/solid'
 
 const solutions = [
   {
@@ -45,11 +38,11 @@ function classNames(...classes) {
 
 export default function Header() {
   return (
-    <Popover className="relative bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+    <Popover className="relative bg-white" id="headerTarget">
+      <div className="mx-auto px-4 sm:px-6 border-b border-slate-900/5" id="headerTarget2">
+        <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            {/* <Link href="/"> */}
+            <Link href="/">
               <a href="#">
                 <span className="sr-only">Workflow</span>
                 <Image
@@ -60,7 +53,7 @@ export default function Header() {
                   width={100}
                 />
               </a>
-            {/* </Link> */}
+            </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -127,13 +120,13 @@ export default function Header() {
             </Popover>
 
 
-            {/* <Link href="/components/shop"> */}
-              <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
+            <Link href="./origianl">
+              <a href="#" className="text-base font-medium text-gray-900 drop-shadow-lg">
                 Original
               </a>
-            {/* </Link> */}
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Works
+            </Link>
+            <a href="#" className="text-base font-medium text-gray-900 drop-shadow-lg">
+              Notice
             </a>
 
             <Popover className="relative">
@@ -162,14 +155,14 @@ export default function Header() {
             </Popover>
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="#" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+            <a href="#" className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg">
               Sign in
             </a>
-            <a
-              href="#"
-              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-            >
-              Sign up
+            <a href="#" className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg">
+              Mypage
+            </a>
+            <a href="#" className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg">
+              Cart
             </a>
           </div>
         </div>

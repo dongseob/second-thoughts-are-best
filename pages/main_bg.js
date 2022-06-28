@@ -1,23 +1,28 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import ReactFullpage from '@fullpage/react-fullpage';
-import Footer from "./footer"
+import Header from "./components/header"
+import Footer from "./components/footer"
+import React, { useEffect } from 'react';
 
 function Main_bg(){
-    const style = {
-        width: "100%",
-        top: "0px",
-        zIndex: "-1"
-    }
+    // 메인페이지에서는 헤더가 absolute화, border 제거
+    useEffect(() => {
+        const tar = document.getElementById("headerTarget");
+        const tar2 = document.getElementById("headerTarget2");
+        const tar3 = document.getElementById("footerTarget");
+        tar.classList.remove("relative","bg-white");
+        tar.classList.add("absolute", "z-10", "w-full");
+        tar2.classList.remove("border-b");
+        tar3.classList.remove("border-t");
+    },[])
 
     return(
-        <main style={style} className='!absolute'>
+        <>
+            <Header></Header>
+
             <ReactFullpage
                 //fullpage options
                 licenseKey = {'YOUR_KEY_HERE'}
                 scrollingSpeed = {1000} /* Options here */
-                
-    
                 render={({ state, fullpageApi }) => {
                 return (
                     <ReactFullpage.Wrapper>
@@ -33,7 +38,7 @@ function Main_bg(){
                 );
                 }}
             />
-        </main>
+        </>
         
     )
 }

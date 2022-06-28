@@ -4,8 +4,8 @@ import Footer from "./components/footer"
 import React, { useEffect } from 'react';
 
 function Main_bg(){
-    // 메인페이지에서는 헤더가 absolute화, border 제거
     useEffect(() => {
+        // 메인페이지에서는 헤더가 absolute화, border 제거
         const tar = document.getElementById("headerTarget");
         const tar2 = document.getElementById("headerTarget2");
         const tar3 = document.getElementById("footerTarget");
@@ -13,6 +13,11 @@ function Main_bg(){
         tar.classList.add("absolute", "z-10", "w-full");
         tar2.classList.remove("border-b");
         tar3.classList.remove("border-t");
+
+        // fullpage.js waterMark remover
+        // const warterMark = document.getElementById("waterMarkTarget");
+        // warterMark.childNodes[1].innerHTML="asd";
+        // warterMark.childNodes[2].innerHTML="qwe";
     },[])
 
     return(
@@ -30,7 +35,7 @@ function Main_bg(){
                         </div>
                         <div className="section" style={{backgroundImage:"url('/images/45347.jpg')", backgroundSize: "cover"}}>
                         </div>
-                        <div className="section fp-auto-height">
+                        <div className="section fp-auto-height" id='waterMarkTarget'>
                             <Footer></Footer>
                         </div>
                         {/* 마지막 .section에는 fullpage popup이 생성됨 */}

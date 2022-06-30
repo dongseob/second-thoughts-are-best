@@ -2,11 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face{
+  font-family:"caslon-regular";
+  src:url("/font/ACaslonPro-Regular.woff") format("woff");
+}
+@font-face{
+  font-family:"caslon-semibold";
+  src:url("/font/ACaslonPro-Semibold.woff") format("woff");
+}
+@font-face{
+  font-family:"caslon-bold";
+  src:url("/font/ACaslonPro-Bold.woff") format("woff");
+}
+
+@font-face{
+  font-family:"maruburi-bold";
+  src:url("/font/MaruBuri-Bold.woff") format("woff");
+}
+@font-face{
+  font-family:"maruburi-semibold";
+  src:url("/font/MaruBuri-SemiBold.woff") format("woff");
+}
+@font-face{
+  font-family:"maruburi-regular";
+  src:url("/font/MaruBuri-Regular.woff") format("woff");
+  font-size:1.2em;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: -apple-system, caslon-semibold, maruburi-regular, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 

@@ -46,10 +46,10 @@ export default function Header() {
                 <span className="sr-only">Workflow</span>
                 <Image
                   className="h-8 w-auto sm:h-10"
-                  src="/vercel.svg"
+                  src="/images/second-thoghts-are-best_logo.svg"
                   alt=""
                   height={30}
-                  width={100}
+                  width={300}
                 />
               </a>
             </Link>
@@ -128,10 +128,10 @@ export default function Header() {
                 <div>
                   <Image
                     className="h-8 w-auto"
-                    src="/vercel.svg"
+                    src="/images/second-thoghts-are-best_logo.svg"
                     alt="Workflow"
                     height={30}
-                    width={100}
+                    width={300}
                   />
                 </div>
                 <div className="-mr-2">

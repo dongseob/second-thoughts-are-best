@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
 import {
   ChartBarIcon,
   CursorClickIcon,
@@ -10,49 +10,51 @@ import {
   PhoneIcon,
   PlayIcon,
   XIcon,
-} from '@heroicons/react/outline'
+} from "@heroicons/react/outline";
 
 const solutions = [
   {
-    name: 'Original',
-    description: 'Get a better understanding of where your traffic is coming from.',
-    href: '/origianl',
+    name: "Original",
+    description:
+      "Get a better understanding of where your traffic is coming from.",
+    href: "/origianl",
     // icon: ChartBarIcon,
   },
   {
-    name: 'Notice',
-    description: 'Speak directly to your customers in a more meaningful way.',
-    href: '/notice',
+    name: "Notice",
+    description: "Speak directly to your customers in a more meaningful way.",
+    href: "/notice",
     // icon: CursorClickIcon,
   },
-]
+];
 const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-]
+  { name: "Watch Demo", href: "#", icon: PlayIcon },
+  { name: "Contact Sales", href: "#", icon: PhoneIcon },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
   return (
     <Popover className="relative bg-white" id="headerTarget">
-      <div className="mx-auto px-4 sm:px-6 border-b border-slate-900/5" id="headerTarget2">
+      <div
+        className="mx-auto px-4 sm:px-6 border-b border-slate-900/5"
+        id="headerTarget2"
+      >
         <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            {/* <Link href="/"> */}
-              <a href="/.">
-                <span className="sr-only">Workflow</span>
-                <Image
-                  className="h-8 w-auto sm:h-10"
-                  src="/images/second-thoghts-are-best_logo.svg"
-                  alt=""
-                  height={30}
-                  width={300}
-                />
-              </a>
-            {/* </Link> */}
+            <a href="/.">
+              <span className="sr-only">Workflow</span>
+              <Image
+                className="h-8 w-auto sm:h-10"
+                src="/images/second-thoghts-are-best_logo.svg"
+                alt=""
+                height={30}
+                width={300}
+              />
+            </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500">
@@ -62,13 +64,19 @@ export default function Header() {
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
             <Link href="./origianl">
-              <a href="#" className="text-base font-medium text-gray-900 drop-shadow-lg hover:line-through">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 drop-shadow-lg hover:line-through"
+              >
                 Original
               </a>
             </Link>
 
             <Link href="./notice">
-              <a href="#" className="text-base font-medium text-gray-900 drop-shadow-lg hover:line-through">
+              <a
+                href="#"
+                className="text-base font-medium text-gray-900 drop-shadow-lg hover:line-through"
+              >
                 Notice
               </a>
             </Link>
@@ -78,11 +86,10 @@ export default function Header() {
                 <>
                   <Popover.Button
                     className={classNames(
-                      open ? 'text-gray-900' : 'text-gray-500',
-                      'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
+                      open ? "text-gray-900" : "text-gray-500",
+                      "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                     )}
-                  >
-                  </Popover.Button>
+                  ></Popover.Button>
 
                   <Transition
                     as={Fragment}
@@ -92,20 +99,28 @@ export default function Header() {
                     leave="transition ease-in duration-150"
                     leaveFrom="opacity-100 translate-y-0"
                     leaveTo="opacity-0 translate-y-1"
-                  >
-                  </Transition>
+                  ></Transition>
                 </>
               )}
             </Popover>
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a href="#" className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through">
+            <a
+              href="#"
+              className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+            >
               Sign in
             </a>
-            <a href="#" className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through">
+            <a
+              href="#"
+              className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+            >
               Mypage
             </a>
-            <a href="#" className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through">
+            <a
+              href="#"
+              className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+            >
               Cart
             </a>
           </div>
@@ -121,7 +136,10 @@ export default function Header() {
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <Popover.Panel focus className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50">
+        <Popover.Panel
+          focus
+          className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50"
+        >
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
@@ -147,10 +165,12 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 hover:line-through"
                     >
                       {/* <item.icon className="flex-shrink-0 h-6 w-6 text-gray-900" aria-hidden="true" /> */}
-                      <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
+                      <span className="ml-3 text-base font-medium text-gray-900">
+                        {item.name}
+                      </span>
                     </a>
                   ))}
                 </nav>
@@ -159,11 +179,17 @@ export default function Header() {
             <div className="py-6 px-5 space-y-6">
               <div>
                 <p className="text-sm font-medium text-gray-500">
-                  <a href="#" className="text-gray-600 hover:text-gray-500">
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-gray-500 hover:line-through"
+                  >
                     Sign in
                   </a>
                   &emsp;/&emsp;
-                  <a href="#" className="text-gray-600 hover:text-gray-500">
+                  <a
+                    href="#"
+                    className="text-gray-600 hover:text-gray-500 hover:line-through"
+                  >
                     Sign up
                   </a>
                 </p>
@@ -173,5 +199,5 @@ export default function Header() {
         </Popover.Panel>
       </Transition>
     </Popover>
-  )
+  );
 }

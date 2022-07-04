@@ -1,6 +1,21 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
 
+const row = [
+  {
+    no: "1",
+    subject: "[공지] 22SS 캡슐 컬렉션 발매",
+    name: "정동섭1",
+    date: "22-01-01"
+  },
+  {
+    no: "2",
+    subject: "[공지] 22FW 캡슐 컬렉션 발매",
+    name: "정동섭2",
+    date: "22-02-01"
+  },
+]
+
 export default function Notice() {
   return (
     <>
@@ -35,47 +50,34 @@ export default function Notice() {
               />
             </div>
           </div>
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="p-4">
+                <th scope="col" className="px-4 py-4">
                   No.
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-4 py-4">
                   Subject
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-4 py-4">
                   Name
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-4 py-4">
                   Date
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td className="w-4 p-4">1467</td>
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                >
-                  [배송문의] QnA로 할까 notice로 할까 고민중인글
-                </th>
-                <td className="px-6 py-4">남궁동섭</td>
-                <td className="px-6 py-4">22-02-01</td>
-              </tr>
 
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td className="w-4 p-4">14677</td>
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                >
-                  [배송문의] QnA로 할까 notice로 할까 고민중인글 QnA로 할까 notice로 할까 고민중인글
-                </th>
-                <td className="px-6 py-4">조동섭</td>
-                <td className="px-6 py-4">21-02-01</td>
-              </tr>
+              {row.map((item) => (
+                  <tr key={item.no} id={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <td className="px-4 py-4">{item.no}</td>
+                    <td className="px-4 py-4">{item.subject}</td>
+                    <td className="px-4 py-4">{item.name}</td>
+                    <td className="px-4 py-4">{item.date}</td>
+                  </tr>
+              ))}
+
             </tbody>
           </table>
         </div>

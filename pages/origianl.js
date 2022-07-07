@@ -1,46 +1,34 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Image from "next/image";
+import Link from "next/link";
 
 const products = [
-    {
-      id: 1,
-      name: 'Earthen Bottle',
-      href: '#',
-      price: '$48',
-      imageSrc: '/images/45942.jpg',
-      imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-    },
-    {
-      id: 2,
-      name: 'Nomad Tumbler',
-      href: '#',
-      price: '$35',
-      imageSrc: '/images/45347.jpg',
-      imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
-    },
-    {
-      id: 3,
-      name: 'Focus Paper Refill',
-      href: '#',
-      price: '$89',
-      imageSrc: '/images/45347.jpg',
-      imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
-    },
-    {
-      id: 4,
-      name: 'Machined Mechanical Pencil',
-      href: '#',
-      price: '$35',
-      imageSrc: '/images/45347.jpg',
-      imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
-    },
-    // More products...p
-  ]
+  {
+    id: 2,
+    name: "Zeroize",
+    name2: "Zeroize 1/2 T-Shirt",
+    href: "#",
+    price: "KRW 38,000",
+    imageSrc: "/images/original/Zeroize/Zeroize1.png",
+    imageAlt: "Zeroize",
+  },
+  {
+    id: 1,
+    name: "DungEater",
+    name2: "Dung Eater 1/2 T-Shirt",
+    href: "#",
+    price: "KRW 38,000",
+    imageSrc: "/images/original/DungEater/DungEater1.png",
+    imageAlt: "DungEater",
+  },
+
+  // More products...
+];
 
 function Original() {
   return (
-    <div>
+    <>
       <Header></Header>
 
       <div className="bg-white">
@@ -50,16 +38,22 @@ function Original() {
           <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {products.map((product) => (
               <a key={product.id} href={product.href} className="group">
-                <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                  <Image
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    className="w-full h-full object-center object-cover group-hover:opacity-75"
-                    width={1000}
-                    height={1000}
-                  />
+                <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                  <Link
+                    href={"/original/" + product.name.replace(/(\s*)/g, "")}
+                  >
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.imageAlt}
+                      className="w-full h-full object-center object-cover group-hover:opacity-75"
+                      width={1000}
+                      height={1000}
+                    />
+                  </Link>
                 </div>
-                <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                <h3 className="mt-4 text-base text-gray-700">
+                  {product.name2}
+                </h3>
                 <p className="mt-1 text-lg font-medium text-gray-900">
                   {product.price}
                 </p>
@@ -70,7 +64,7 @@ function Original() {
       </div>
 
       <Footer></Footer>
-    </div>
+    </>
   );
 }
 

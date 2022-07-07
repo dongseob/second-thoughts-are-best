@@ -1,20 +1,33 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
+import React, { useEffect } from "react";
 
 const row = [
   {
-    no: "1",
-    subject: "[공지] 22SS 캡슐 컬렉션 발매",
-    name: "정동섭1",
-    date: "22-01-01"
+    no: "4",
+    subject: "22 FW ragnarok collection",
+    name: "master",
+    date: "22-09-01",
+  },
+  {
+    no: "3",
+    subject: "22 SS aurora collection",
+    name: "master",
+    date: "22-03-01",
   },
   {
     no: "2",
-    subject: "[공지] 22FW 캡슐 컬렉션 발매",
-    name: "정동섭2",
-    date: "22-02-01"
+    subject: "21 FW paris collection",
+    name: "master",
+    date: "21-09-01",
   },
-]
+  {
+    no: "1",
+    subject: "21 SS bohemian collection",
+    name: "master",
+    date: "21-03-01",
+  },
+];
 
 export default function Notice() {
   return (
@@ -22,7 +35,7 @@ export default function Notice() {
       <Header></Header>
 
       <div className="mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg lg:max-w-7xl mx-auto">
           <div className="p-4">
             <label htmlFor="table-search" className="sr-only">
               Search
@@ -51,33 +64,41 @@ export default function Notice() {
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-fixed">
+            <colgroup>
+              <col width={10}></col>
+              <col width={50}></col>
+              <col width={20}></col>
+              <col width={20}></col>
+            </colgroup>
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-4 py-4">
+                <th scope="col" className="px-4 py-4 text-center">
                   No.
                 </th>
-                <th scope="col" className="px-4 py-4">
+                <th scope="col" className="px-4 py-4 text-center">
                   Subject
                 </th>
-                <th scope="col" className="px-4 py-4">
+                <th scope="col" className="px-4 py-4 text-center">
                   Name
                 </th>
-                <th scope="col" className="px-4 py-4">
+                <th scope="col" className="px-4 py-4 text-center">
                   Date
                 </th>
               </tr>
             </thead>
             <tbody>
-
               {row.map((item) => (
-                  <tr key={item.no} id={item.no} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td className="px-4 py-4">{item.no}</td>
-                    <td className="px-4 py-4">{item.subject}</td>
-                    <td className="px-4 py-4">{item.name}</td>
-                    <td className="px-4 py-4">{item.date}</td>
-                  </tr>
+                <tr
+                  key={item.no}
+                  id={item.no}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <td className="px-4 py-4 text-center">{item.no}</td>
+                  <td className="px-4 py-4 break-words">{item.subject}</td>
+                  <td className="px-4 py-4 text-center">{item.name}</td>
+                  <td className="px-4 py-4 text-center">{item.date}</td>
+                </tr>
               ))}
-
             </tbody>
           </table>
         </div>

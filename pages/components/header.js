@@ -63,7 +63,7 @@ export default function Header() {
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
-            <Link href="./origianl">
+            <Link href="/origianl">
               <a
                 href="#"
                 className="text-base font-medium text-gray-900 drop-shadow-lg hover:line-through"
@@ -72,7 +72,7 @@ export default function Header() {
               </a>
             </Link>
 
-            <Link href="./notice">
+            <Link href="/notice">
               <a
                 href="#"
                 className="text-base font-medium text-gray-900 drop-shadow-lg hover:line-through"

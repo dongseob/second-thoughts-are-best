@@ -2,6 +2,7 @@ import ReactFullpage from "@fullpage/react-fullpage";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import React, { useEffect } from "react";
+import Image from "next/image";
 
 function Main_bg() {
   useEffect(() => {
@@ -32,25 +33,36 @@ function Main_bg() {
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
-              <div
+              <div className="section md:!w-2/4 w-full mx-auto">
+                <Image
+                  src={"/images/bg/Klaxosaur.jpg"}
+                  alt={"test"}
+                  layout={"fill"}
+                  // width={1000}
+                  // height={1000}
+                ></Image>
+              </div>
+
+              <div className="section md:!w-2/4 w-full mx-auto">
+                <Image
+                  src={"/images/bg/RFC.jpg"}
+                  alt={"test"}
+                  width={1000}
+                  height={1000}
+                ></Image>
+              </div>
+
+              {/* <div
                 className="section"
                 style={{
-                  backgroundImage: "url('/images/45942.jpg')",
+                  backgroundImage: "url('/images/bg/RFC.jpg')",
                   backgroundSize: "cover",
                 }}
-              ></div>
-              <div
-                className="section"
-                style={{
-                  backgroundImage: "url('/images/45347.jpg')",
-                  backgroundSize: "cover",
-                }}
-              ></div>
+              ></div> */}
               <div className="section fp-auto-height" id="waterMarkTarget">
                 <Footer></Footer>
               </div>
               {/* 마지막 .section에는 fullpage popup이 생성됨 */}
-
             </ReactFullpage.Wrapper>
           );
         }}

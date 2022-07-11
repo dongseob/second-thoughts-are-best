@@ -112,8 +112,8 @@ export default function DungEater() {
                             src={image.src}
                             alt=""
                             className="w-full h-full object-center object-cover"
-                            width={600}
-                            height={800}
+                            width={800}
+                            height={600}
                           />
                         </span>
                         <span
@@ -278,7 +278,7 @@ export default function DungEater() {
                         >
                           <ul role="list">
                             {detail.items.map((item) => (
-                              <li key={item}>{item}</li>
+                              <li className="text-sm" key={item}>{item}</li>
                             ))}
                           </ul>
                         </Disclosure.Panel>

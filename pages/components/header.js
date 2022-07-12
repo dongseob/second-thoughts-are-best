@@ -1,9 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-import React, { useState, useEffect } from "react";
-import app from "../firebase";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
@@ -41,67 +37,8 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  const [userEmail, setUserEmail] = useState(""); //로그인한 유저의 이메일주소
-  const [isLogined, setIsLogined] = useState(false); //로그인 상태 true:접속 / false:미접속
-
-  const logOut = () => {
-    if(window.confirm("로그아웃 처리 하시겠습니까?")){
-      const result = signOut(auth);
-      console.log("로그아웃 : " , result);
-
-
-      deleteUser(user).then(() => {
-        alert("제거성공")
-        // User deleted.
-      }).catch((error) => {
-        alert("제거실패")
-        // An error ocurred
-        // ...
-      });
-
-
-    }
-  };
-
-  useEffect(() => {
-    //로그인 되었는지 확인하기
-    onAuthStateChanged(
-      auth,
-      (user) => {
-        if (user) {
-          //로그인일시
-          const uid = user.uid;
-          setUserEmail(user.email)
-          setIsLogined(true);
-        } else {
-          //미로그인일시
-          setIsLogined(false);
-        }
-      },
-      []
-    );
-  });
-
   return (
     <Popover className="relative bg-white" id="headerTarget">
-      <Head>
-        <title>second thoughts are best</title>
-        <meta name="description" content="second thoughts are best" />
-        <link rel="icon" href="/images/second-thoghts-are-best_favicon.svg" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta
-          name="keywords"
-          content="남자옷, 남성의류, 패션, 스타일, 자체제작,"
-        ></meta>
-        <meta property="og:title" content="second thoughts are best" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://second-thoughts-are-best.vercel.app/"
-        />
-      </Head>
       <div
         className="mx-auto px-4 sm:px-6 border-b border-slate-900/5"
         id="headerTarget2"
@@ -168,51 +105,24 @@ export default function Header() {
             </Popover>
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            {isLogined === false ? (
-              <>
-                <Link href="/signIn">
-                  <a
-                    href="#"
-                    className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                  >
-                    Sign in
-                  </a>
-                </Link>
-                <Link href="/signUp">
-                  <a
-                    href="#"
-                    className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                  >
-                    Sign up
-                  </a>
-                </Link>
-              </>
-            ) : (
-              <>
-                <p>{userEmail}</p>
-
-                <a
-                  href="#"
-                  onClick={logOut}
-                  className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                >
-                  Sign out
-                </a>
-
-                <a
-                  href="#"
-                  className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                >
-                  Mypage
-                </a>
-                <a
-                  href="#"
-                  className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                >
-                  Cart
-                </a>
-              </>
-            )}
+            <a
+              href="#"
+              className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+            >
+              Sign in
+            </a>
+            <a
+              href="#"
+              className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+            >
+              Mypage
+            </a>
+            <a
+              href="#"
+              className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+            >
+              Cart
+            </a>
           </div>
         </div>
       </div>

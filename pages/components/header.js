@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import "../../api/firebase";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
@@ -40,7 +41,44 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+  const auth = getAuth();	
+  const user = auth.currentUser;
+  const [userEmail, setUserEmail] = useState(""); //로그인한 유저의 이메일주소
   const [isLogined, setIsLogined] = useState(false); //로그인 상태 true:접속 / false:미접속
+
+  const logOut = async () => {	
+    if(window.confirm("로그아웃 처리 하시겠습니까?")){	
+      const result = await signOut(auth);	
+      console.log("로그아웃 : " , result);	
+      deleteUser(user).then(() => {	
+        alert("제거성공")	
+        // User deleted.	
+      }).catch((error) => {	
+        alert("제거실패")	
+        // An error ocurred	
+        // ...	
+      });	
+    }	
+  };
+
+  useEffect(() => {	
+    //로그인 되었는지 확인하기	
+    onAuthStateChanged(	
+      auth,	
+      (user) => {	
+        if (user) {	
+          //로그인일시	
+          const uid = user.uid;	
+          setUserEmail(user.email)	
+          setIsLogined(true);	
+        } else {	
+          //미로그인일시	
+          setIsLogined(false);	
+        }	
+      },	
+      []	
+    );	
+  });
 
   return (
     <Popover className="relative bg-white" id="headerTarget">

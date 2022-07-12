@@ -9,8 +9,8 @@ export default function SignIn() {
     const email = document.getElementById("email").value;
     const pw = document.getElementById("password").value;
     const result = await signInWithEmailAndPassword(auth, email, pw);
-    alert("로그인성공" + email)
-    console.log("로그인" , result);
+    await alert("로그인성공");
+    location.href="/";
   }
 
   return (

@@ -14,8 +14,7 @@ export default function SignUp() {
     const email = document.getElementById("email").value;
     const pw = document.getElementById("password").value;
     const result = await createUserWithEmailAndPassword(auth, "jds1234@naver.com", "ehdtjq11!");
-    console.log("회원가입 : " , result);
-    alert("정상 회원등록 되었습니다. 로그인을 해주세요.");
+    await alert("정상 회원등록 되었습니다. 로그인을 해주세요.");
     location.href="/";
   };
 

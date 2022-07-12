@@ -4,13 +4,25 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "../api/firebase";
 
 export default function SignIn() {
+
   const signIn = async () => {
     const auth = getAuth();
     const email = document.getElementById("email").value;
     const pw = document.getElementById("password").value;
-    const result = await signInWithEmailAndPassword(auth, email, pw);
-    await alert("로그인성공");
-    location.href="/";
+    
+    signInWithEmailAndPassword(auth, email, pw)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      // ...
+      location.href="../";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode);
+      alert(errorMessage);
+    });
   }
 
   return (

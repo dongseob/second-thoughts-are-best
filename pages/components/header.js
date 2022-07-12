@@ -48,16 +48,7 @@ export default function Header() {
 
   const logOut = async () => {	
     if(window.confirm("로그아웃 처리 하시겠습니까?")){	
-      const result = await signOut(auth);	
-      console.log("로그아웃 : " , result);	
-      deleteUser(user).then(() => {	
-        alert("제거성공")	
-        // User deleted.	
-      }).catch((error) => {	
-        alert("제거실패")	
-        // An error ocurred	
-        // ...	
-      });	
+      const result = await signOut(auth);
     }	
   };
 
@@ -71,9 +62,11 @@ export default function Header() {
           const uid = user.uid;	
           setUserEmail(user.email)	
           setIsLogined(true);	
+          console.log("로그인 상태");
         } else {	
           //미로그인일시	
-          setIsLogined(false);	
+          setIsLogined(false);
+          console.log("미로그인 상태");
         }	
       },	
       []	
@@ -193,18 +186,22 @@ export default function Header() {
                 >
                   Sign out
                 </a>
-                <a
-                  href="#"
-                  className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                >
-                  Mypage
-                </a>
-                <a
-                  href="#"
-                  className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
-                >
-                  Cart
-                </a>
+                <Link href="/myPage">
+                  <a
+                    href="#"
+                    className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+                  >
+                    Mypage
+                  </a>
+                </Link>
+                <Link href="/cart">
+                  <a
+                    href="#"
+                    className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
+                  >
+                    Cart
+                  </a>
+                </Link>
               </>
             )}
           </div>

@@ -8,14 +8,29 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [isSignUp, setIsSignUp] = useState(true);
-  
+
   const signUp = async () => {
     const auth = getAuth();
     const email = document.getElementById("email").value;
     const pw = document.getElementById("password").value;
-    const result = await createUserWithEmailAndPassword(auth, "jds1234@naver.com", "ehdtjq11!");
-    await alert("정상 회원등록 되었습니다. 로그인을 해주세요.");
-    location.href="/";
+    if (window.confirm("입력하신 정보로 회원가입 하시겠습니까?")) {
+      createUserWithEmailAndPassword(auth, email, pw)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+          alert("정상 회원등록 되었습니다. \n초기 페이지로 이동합니다.");
+          location.href = "../";
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          alert(errorMessage);
+          // ..
+        });
+    }
+    // location.href = "/";
   };
 
   return (

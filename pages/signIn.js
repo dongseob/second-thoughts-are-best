@@ -1,6 +1,7 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import "../api/firebase";
 
 export default function SignIn() {
   const signIn = async () => {

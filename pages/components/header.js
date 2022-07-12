@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import React,{useState} from "react";
+import "../../api/firebase";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";

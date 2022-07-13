@@ -15,7 +15,7 @@ export default function SignIn() {
       // Signed in
       const user = userCredential.user;
       // ...
-      location.href="../";
+      history.back();
     })
     .catch((error) => {
       const errorCode = error.code;

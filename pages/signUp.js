@@ -1,18 +1,15 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
-import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import "../api/firebase";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
-  const [isSignUp, setIsSignUp] = useState(true);
-
+  
   const signUp = async () => {
     const auth = getAuth();
     const email = document.getElementById("email").value;
     const pw = document.getElementById("password").value;
+
     if (window.confirm("입력하신 정보로 회원가입 하시겠습니까?")) {
       createUserWithEmailAndPassword(auth, email, pw)
         .then((userCredential) => {
@@ -20,7 +17,8 @@ export default function SignUp() {
           const user = userCredential.user;
           // ...
           alert("정상 회원등록 되었습니다. \n초기 페이지로 이동합니다.");
-          location.href = "../";
+          // location.href = "/";
+          history.back();
         })
         .catch((error) => {
           const errorCode = error.code;

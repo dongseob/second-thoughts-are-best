@@ -5,8 +5,8 @@ import "../api/firebase";
 import React, {useEffect, useState} from "react";
 
 export default function SignUp() {
-  const [email,setEmail2] = useState("");
-  const [pw,setPw2] = useState("");
+  const [email,setEmail] = useState("");
+  const [pw,setPw] = useState("");
 
   const signUp = () => {
     const auth = getAuth();

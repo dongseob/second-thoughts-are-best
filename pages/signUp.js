@@ -2,29 +2,30 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import "../api/firebase";
+import React, {useEffect, useState} from "react";
 
 export default function SignUp() {
-  
-  const signUp = async () => {
+  const [email,setEmail2] = useState("");
+  const [pw,setPw2] = useState("");
+
+  const signUp = () => {
     const auth = getAuth();
-    const email = document.getElementById("email").value;
-    const pw = document.getElementById("password").value;
 
     if (window.confirm("입력하신 정보로 회원가입 하시겠습니까?")) {
       createUserWithEmailAndPassword(auth, email, pw)
+      // createUserWithEmailAndPassword(auth, "qwe123q@naver.com", "1q2w3e4r!!@@")
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          // ...
+          console.log(user)
           alert("정상 회원등록 되었습니다. \n초기 페이지로 이동합니다.");
-          // location.href = "/";
-          history.back();
+          location.href = "/";
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode);
-          alert(errorMessage);
+          alert("error : " + errorMessage);
           // ..
         });
     }
@@ -58,6 +59,7 @@ export default function SignUp() {
                     type="email"
                     autoComplete="email"
                     required
+                    onChange={(e) => {setEmail(e.target.value)}}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                   />
                 </div>
@@ -77,6 +79,7 @@ export default function SignUp() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    onChange={(e) => {setPw(e.target.value)}}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                   />
                 </div>

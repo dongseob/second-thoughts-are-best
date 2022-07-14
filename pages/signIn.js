@@ -5,16 +5,16 @@ import "../api/firebase";
 
 export default function SignIn() {
 
-  const signIn = async () => {
+  const signIn = () => {
     const auth = getAuth();
     const email = document.getElementById("email").value;
     const pw = document.getElementById("password").value;
     
-    signInWithEmailAndPassword(auth, email, pw)
+    // signInWithEmailAndPassword(auth, email, pw)
+    signInWithEmailAndPassword(auth, "jds3567@naver.com", "ehdtjq11!")
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      // ...
       history.back();
     })
     .catch((error) => {

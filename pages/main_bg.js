@@ -35,7 +35,7 @@ function Main_bg() {
             <ReactFullpage.Wrapper>
               <div className="section md:!w-2/4 w-full mx-auto">
                 <Image
-                  src={"/images/bg/Klaxosaur.jpg"}
+                  src={"/images/bg/abyssalSerpent.jpg"}
                   alt={"test"}
                   layout={"fill"}
                   // width={1000}

@@ -11,8 +11,8 @@ export default function SignIn() {
   const signIn = () => {
     const auth = getAuth();
 
-    signInWithEmailAndPassword(auth, email, pw)
-    // signInWithEmailAndPassword(auth, "jds3567@naver.com", "ehdtjq11!")
+    // signInWithEmailAndPassword(auth, email, pw)
+    signInWithEmailAndPassword(auth, "jds3567@naver.com", "ehdtjq11!")
     .then((userCredential) => {
       const user = userCredential.user;
       location.href = "/";
@@ -20,7 +20,7 @@ export default function SignIn() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
+      alert("error : " + errorMessage);
     });
   }
 

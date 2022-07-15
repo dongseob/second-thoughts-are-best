@@ -4,7 +4,6 @@ import Head from "next/head";
 import React,{useState, useEffect} from "react";
 import "../../api/firebase";
 import { getAuth, signOut, onAuthStateChanged, deleteUser } from "firebase/auth";
-import SignIn2 from "../signIn2";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
@@ -46,7 +45,6 @@ export default function Header() {
   const user = auth.currentUser;
   const [userEmail, setUserEmail] = useState(""); //로그인한 유저의 이메일주소
   const [isLogined, setIsLogined] = useState(false); //로그인 상태 true:접속 / false:미접속
-  const [isModal, setIsModal] = useState(false);
 
   const logOut = () => {	
     if(window.confirm("로그아웃 처리 하시겠습니까?")){
@@ -67,10 +65,6 @@ export default function Header() {
       });
     }	
   };
-
-  useEffect(()=>{
-    alert("isModal : " + isModal)
-  },[isModal])
 
   useEffect(() => {
     //로그인 되었는지 확인하기	
@@ -175,15 +169,14 @@ export default function Header() {
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
             {isLogined === false ? (
               <>
-                {/* <Link href="/signIn"> */}
+                <Link href="/signIn">
                   <a
                     href="#"
-                    onClick={() => {setIsModal(true)}}
                     className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
                   >
                     Sign in
                   </a>
-                {/* </Link> */}
+                </Link>
                 <Link href="/signUp">
                   <a
                     href="#"
@@ -296,8 +289,6 @@ export default function Header() {
           </div>
         </Popover.Panel>
       </Transition>
-
-      <SignIn2 isModal={isModal}></SignIn2>
     </Popover>
   );
 }

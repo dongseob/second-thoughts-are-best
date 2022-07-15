@@ -2,25 +2,24 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "../api/firebase";
+import React, {useState} from "react";
 
 export default function SignIn() {
+  const [email,setEmail] = useState("");
+  const [pw,setPw] = useState("");
 
   const signIn = () => {
     const auth = getAuth();
-    const email = document.getElementById("email").value;
-    const pw = document.getElementById("password").value;
-    
+
     signInWithEmailAndPassword(auth, email, pw)
     // signInWithEmailAndPassword(auth, "jds3567@naver.com", "ehdtjq11!")
     .then((userCredential) => {
-      // Signed in
       const user = userCredential.user;
-      history.back();
+      location.href = "/";
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode);
       alert(errorMessage);
     });
   }
@@ -52,6 +51,7 @@ export default function SignIn() {
                     type="email"
                     autoComplete="email"
                     required
+                    onChange={(e) => {setEmail(e.target.value)}}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                   />
                 </div>
@@ -71,6 +71,7 @@ export default function SignIn() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    onChange={(e) => {setPw(e.target.value)}}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm"
                   />
                 </div>

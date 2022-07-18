@@ -7,13 +7,11 @@ import React, {useState} from "react";
 export default function SignUp() {
   const [email,setEmail] = useState("");
   const [pw,setPw] = useState("");
+  const auth = getAuth();
 
   const signUp = () => {
-    const auth = getAuth();
-
     if (window.confirm("입력하신 정보로 회원가입 하시겠습니까?")) {
-      // createUserWithEmailAndPassword(auth, email, pw)
-      createUserWithEmailAndPassword(auth, "qwe123q@naver.com", "1q2w3e4r!!@@")
+      createUserWithEmailAndPassword(auth, email, pw)
         .then((userCredential) => {
           const user = userCredential.user;
           alert("정상 회원등록 되었습니다. \n초기 페이지로 이동합니다.");
@@ -23,7 +21,6 @@ export default function SignUp() {
           const errorCode = error.code;
           const errorMessage = error.message;
           alert("error : " + errorMessage);
-          // ..
         });
     }
   };
@@ -83,7 +80,7 @@ export default function SignUp() {
 
               <div>
                 <button
-                  type="submit"
+                  type="button"
                   onClick={signUp}
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                 >

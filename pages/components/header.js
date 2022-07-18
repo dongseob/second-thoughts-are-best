@@ -48,22 +48,24 @@ export default function Header() {
 
   const logOut = () => {	
     if(window.confirm("로그아웃 처리 하시겠습니까?")){
-
+      
       signOut(auth).then(() => {
         //버그때문에 임시로 로그아웃될때, 계정삭제까지함.
-        deleteUser(user).then(() => {
-          alert("로그아웃 처리 되었습니다.");
-        }).catch((error) => {
-          const errorCode2 = error.code;
-          const errorMessage2 = error.message;
-          alert(errorMessage2);
-        });
+        // deleteUser(user).then(() => {
+        //   alert("로그아웃 처리 되었습니다.");
+        // }).catch((error) => {
+        //   const errorCode2 = error.code;
+        //   const errorMessage2 = error.message;
+        //   alert(errorMessage2);
+        // });
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
       });
-    }	
+    }else{
+      return;
+    }
   };
 
   useEffect(() => {
@@ -188,7 +190,7 @@ export default function Header() {
               </>
             ) : (
               <>
-                <p>{userEmail}</p>
+                <p><span className="text-sm">hello,</span>&nbsp;{userEmail}</p>
                 <a
                   href="#"
                   onClick={logOut}

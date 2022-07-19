@@ -1,12 +1,16 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
 import React, { useState, useEffect } from "react";
+import MyPageCart from "./mypageMenu/cart"
+import MyPagePoint from "./mypageMenu/point"
+import MyPageCoupon from "./mypageMenu/coupon"
+import MyPageEdit from "./mypageMenu/editProfile"
 
 const tabs = [
-  { name: "My Account", href: "#", current: false, num: 0 },
-  { name: "Company", href: "#", current: false, num: 1 },
-  { name: "Team Members", href: "#", current: false, num: 2 },
-  { name: "Billing", href: "#", current: false, num: 3 },
+  { name: "Cart", href: "#", current: true, num: 0 },
+  { name: "Point", href: "#", current: false, num: 1 },
+  { name: "Coupon", href: "#", current: false, num: 2 },
+  { name: "Edit Profile", href: "#", current: false, num: 3 },
 ];
 
 function classNames(...classes) {
@@ -15,14 +19,24 @@ function classNames(...classes) {
 
 export default function MyPage() {
   const [openTab, setOpenTab] = useState(0);
-  useEffect(()=>{
-    tabs[3].current=true
-  },[openTab])
+
+  const clickBee = (num) => {
+    setOpenTab(num);
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].current = false;
+    }
+    tabs[num].current = true;
+  };
+
+  // useEffect(()=>{
+  //   tabs[0].current = true;
+  // },[])
 
   return (
     <>
       <Header></Header>
-      <div className="pt-12 sm:pt-16">
+      <div className="py-16">
+        {/* 마이페이지 상단 */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-base font-extrabold text-gray-900 sm:text-lg">
@@ -65,66 +79,57 @@ export default function MyPage() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="sm:hidden">
-          <label htmlFor="tabs" className="sr-only">
-            Select a tab
-          </label>
-          {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+  
+        {/* 마이페이지 메뉴들 */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="sm:hidden">
+            <label htmlFor="tabs" className="sr-only">
+              Select a tab
+            </label>
+            {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
+          </div>
+          <div className="sm:block">
+            <div className="border-b border-gray-200">
+              <nav className="-mb-px flex" aria-label="Tabs">
+                {tabs.map((tab) => (
+                  <a
+                    key={tab.name}
+                    href={tab.href}
+                    onClick={() => {
+                      clickBee(tab.num);
+                    }}
+                    className={classNames(
+                      tab.current
+                        ? "border-gray-500 text-gray-600"
+                        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
+                      "w-1/4 py-4 px-1 text-center border-b-2 font-medium text-base"
+                    )}
+                    aria-current={tab.current ? "page" : undefined}
+                  >
+                    {tab.name}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </div>
         </div>
-        <div className="sm:block">
-          <div className="border-b border-gray-200">
-            <nav className="-mb-px flex" aria-label="Tabs">
-              {tabs.map((tab) => (
-                <a
-                  key={tab.name}
-                  href={tab.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(tab.num);
-                  }}
-                  className={classNames(
-                    tab.current
-                      ? "border-gray-500 text-gray-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                    "w-1/4 py-4 px-1 text-center border-b-2 font-medium text-sm"
-                  )}
-                  aria-current={tab.current ? "page" : undefined}
-                >
-                  {tab.name}
-                </a>
-              ))}
-            </nav>
+  
+        {/* 메뉴의 콘텐츠들 */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+          <div className={openTab === 0 ? "block" : "hidden"}>
+            <MyPageCart></MyPageCart>
+          </div>
+          <div className={openTab === 1 ? "block" : "hidden"}>
+            <MyPagePoint></MyPagePoint>
+          </div>
+          <div className={openTab === 2 ? "block" : "hidden"}>
+            <MyPageCoupon></MyPageCoupon>
+          </div>
+          <div className={openTab === 3 ? "block" : "hidden"}>
+            <MyPageEdit></MyPageEdit>
           </div>
         </div>
       </div>
-
-      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        content
-        <div className={openTab === 0 ? "block" : "hidden"} id="link1">
-          <p>
-            Collaboratively administrate empowered markets via plug-and-play
-            networks. Dynamically procrastinate B2C users after installed base
-            benefits.
-            <br />
-            <br /> Dramatically visualize customer directed convergence without
-            revolutionary ROI.
-          </p>
-        </div>
-        <div className={openTab === 1 ? "block" : "hidden"} id="link2">
-          <p>
-            Completely synergize resource taxing relationships via premier niche
-            markets. Professionally cultivate one-to-one customer service with
-            robust ideas.
-            <br />
-            <br />
-            Dynamically innovate resource-leveling customer service for state of
-            the art customer service.
-          </p>
-        </div>
-      </div> */}
       <Footer></Footer>
     </>
   );

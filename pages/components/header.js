@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "../../api/firebase";
-import { getAuth, signOut, onAuthStateChanged, deleteUser } from "firebase/auth";
+import {
+  getAuth,
+  signOut,
+  onAuthStateChanged,
+  deleteUser,
+} from "firebase/auth";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
@@ -31,6 +36,31 @@ const solutions = [
     // icon: CursorClickIcon,
   },
 ];
+
+const products = [
+  {
+    id: 1,
+    name: "Zeroize 1/2 T-Shirt",
+    href: "#",
+    color: "White",
+    size: "Medium",
+    imageSrc: "/images/original/Zeroize/Zeroize1.png",
+    imageAlt:
+      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
+  },
+  {
+    id: 2,
+    name: "Zeroize 1/2 T-Shirt",
+    href: "#",
+    color: "White",
+    size: "Large",
+    imageSrc: "/images/original/Zeroize/Zeroize1.png",
+    imageAlt:
+      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
+  },
+  // More products...
+];
+
 const callsToAction = [
   { name: "Watch Demo", href: "#", icon: PlayIcon },
   { name: "Contact Sales", href: "#", icon: PhoneIcon },
@@ -41,44 +71,45 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-  const auth = getAuth();	
+  const auth = getAuth();
   const user = auth.currentUser;
   const [userEmail, setUserEmail] = useState(""); //로그인한 유저의 이메일주소
   const [isLogined, setIsLogined] = useState(false); //로그인 상태 true:접속 / false:미접속
 
-  const logOut = () => {	
-    if(window.confirm("로그아웃 처리 하시겠습니까?")){
-      
-      signOut(auth).then(() => {
-        //버그때문에 임시로 로그아웃될때, 계정삭제까지함.
-        // deleteUser(user).then(() => {
-        //   alert("로그아웃 처리 되었습니다.");
-        // }).catch((error) => {
-        //   const errorCode2 = error.code;
-        //   const errorMessage2 = error.message;
-        //   alert(errorMessage2);
-        // });
-      }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-      });
-    }else{
+  const logOut = () => {
+    if (window.confirm("로그아웃 처리 하시겠습니까?")) {
+      signOut(auth)
+        .then(() => {
+          //버그때문에 임시로 로그아웃될때, 계정삭제까지함.
+          // deleteUser(user).then(() => {
+          //   alert("로그아웃 처리 되었습니다.");
+          // }).catch((error) => {
+          //   const errorCode2 = error.code;
+          //   const errorMessage2 = error.message;
+          //   alert(errorMessage2);
+          // });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    } else {
       return;
     }
   };
 
   useEffect(() => {
-    //로그인 되었는지 확인하기	
+    //로그인 되었는지 확인하기
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        //로그인일시	
+        //로그인일시
         const uid = user.uid;
-        setUserEmail(user.email)	
-          setIsLogined(true);	
+        setUserEmail(user.email);
+        setIsLogined(true);
         console.log("로그인 상태");
       } else {
-        //미로그인일시	
+        //미로그인일시
         setIsLogined(false);
         console.log("미로그인 상태");
       }
@@ -190,7 +221,9 @@ export default function Header() {
               </>
             ) : (
               <>
-                <p><span className="text-sm">hello,</span>&nbsp;{userEmail}</p>
+                <p>
+                  <span className="text-sm">hello,</span>&nbsp;{userEmail}
+                </p>
                 <a
                   href="#"
                   onClick={logOut}
@@ -206,14 +239,76 @@ export default function Header() {
                     Mypage
                   </a>
                 </Link>
-                <Link href="/cart">
+                <Popover.Button className="outline-none">
+                  {/* <Link href="/cart"> */}
                   <a
                     href="#"
                     className="mx-3 whitespace-nowrap text-sm font-medium text-gray-900 drop-shadow-lg hover:line-through"
                   >
                     Cart
                   </a>
-                </Link>
+                  {/* </Link> */}
+                </Popover.Button>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <Popover.Panel className="z-50 absolute top-16 inset-x-0 mt-px pb-6 bg-white shadow-lg sm:px-2 lg:top-full lg:left-auto lg:right-4 lg:mt-3 lg:-mr-1.5 lg:w-80 lg:rounded-lg lg:ring-1 lg:ring-black lg:ring-opacity-5">
+                    <h2 className="sr-only">Shopping Cart</h2>
+
+                    <form className="max-w-2xl mx-auto px-4">
+                      <ul role="list" className="divide-y divide-gray-200">
+                        {products.map((product) => (
+                          <li
+                            key={product.id}
+                            className="py-6 flex items-center"
+                          >
+                            <Image
+                              src={product.imageSrc}
+                              alt={product.imageAlt}
+                              className="flex-none w-16 h-16 rounded-md border border-gray-200"
+                              width={100}
+                              height={120}
+                            />
+                            <div className="ml-4 flex-auto">
+                              <h3 className="font-medium text-gray-900">
+                                <a href={product.href}>{product.name}</a>
+                              </h3>
+                              <p className="text-gray-500">{product.color}</p>
+                              <p className="text-gray-500">{product.size}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Link href="/checkOut">
+                        <button
+                          type="button"
+                          className="w-full bg-gray-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+                        >
+                          Checkout
+                        </button>
+                      </Link>
+
+                      <Link href="/myPage">
+                        <p className="mt-6 text-center">
+                          <a
+                            href="#"
+                            className="text-sm font-medium text-gray-600 hover:text-gray-500"
+                          >
+                            View Shopping Cart
+                          </a>
+                        </p>
+                      </Link>
+                    </form>
+                  </Popover.Panel>
+                </Transition>
               </>
             )}
           </div>

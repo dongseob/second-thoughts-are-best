@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.26",
+    "@google-pay/button-react": "^3.0.0",
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^1.0.6",
     "firebase": "^9.9.0",

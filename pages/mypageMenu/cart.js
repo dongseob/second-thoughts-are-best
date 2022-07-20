@@ -1,14 +1,15 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon, ClockIcon } from '@heroicons/react/solid';
 import Image from "next/image";
+import Link from "next/link";
 
 const products = [
   {
     id: 1,
-    name: 'Artwork Tee',
+    name: 'Zeroize 1/2 T-Shirt',
     href: '#',
-    price: '$32.00',
-    color: 'Mint',
+    price: '38,000 KRW',
+    color: 'White',
     size: 'Medium',
     inStock: true,
     imageSrc: '/images/original/Zeroize/Zeroize1.png',
@@ -16,10 +17,10 @@ const products = [
   },
   {
     id: 2,
-    name: 'Basic Tee',
+    name: 'Zeroize 1/2 T-Shirt',
     href: '#',
-    price: '$32.00',
-    color: 'Charcoal',
+    price: '38,000 KRW',
+    color: 'White',
     inStock: false,
     leadTime: '7-8 days',
     size: 'Large',
@@ -100,20 +101,22 @@ export default function Cart() {
               <dl className="space-y-4">
                 <div className="flex items-center justify-between">
                   <dt className="text-base font-medium text-gray-900">Subtotal</dt>
-                  <dd className="ml-4 text-base font-medium text-gray-900">$96.00</dd>
+                  <dd className="ml-4 text-base font-medium text-gray-900">76,000 KRW</dd>
                 </div>
               </dl>
               <p className="mt-1 text-sm text-gray-500">Shipping and taxes will be calculated at checkout.</p>
             </div>
 
-            <div className="mt-10">
-              <button
-                type="submit"
-                className="w-full bg-gray-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
-              >
-                Checkout
-              </button>
-            </div>
+            <Link href="/checkOut">
+              <div className="mt-10">
+                <button
+                  type="button"
+                  className="w-full bg-gray-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500"
+                >
+                  Checkout
+                </button>
+              </div>
+            </Link>
           </section>
         </form>
       </div>

@@ -37,9 +37,9 @@ function Main_bg() {
                 <Image
                   src={"/images/bg/abyssalSerpent.jpg"}
                   alt={"test"}
-                  // layout={"fill"}
-                  width={1000}
-                  height={1000}
+                  layout={"fill"}
+                  // width={1000}
+                  // height={1000}
                 ></Image>
               </div>
 
@@ -47,8 +47,9 @@ function Main_bg() {
                 <Image
                   src={"/images/bg/toTheMoon.jpg"}
                   alt={"test"}
-                  width={1000}
-                  height={1000}
+                  layout={"fill"}
+                  // width={1000}
+                  // height={1000}
                 ></Image>
               </div>
 

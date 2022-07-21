@@ -1,26 +1,32 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+import { getAuth, deleteUser } from "firebase/auth";
+
 export default function EditProfile() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  const fnDeleteUser = () => {
+    if (window.confirm("정말 계정을 삭제하시겠습니까?")) {
+      deleteUser(user)
+        .then(() => {
+          alert("삭제 처리 되었습니다.");
+          location.href = "/";
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+  };
+
   return (
     <div className="mx-auto py-8 px-4 sm:px-6 lg:px-0">
       <form className="space-y-8 divide-y divide-gray-200">
         <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
-          <h1 className="text-xl font-extrabold text-center tracking-tight text-gray-900 sm:text-2xl">Edit Profile</h1>
-  
+          <h1 className="text-xl font-extrabold text-center tracking-tight text-gray-900 sm:text-2xl">
+            Edit Profile
+          </h1>
+
           <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
             <div>
               <h3 className="text-lg leading-6 font-semibold text-gray-900">
@@ -45,7 +51,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div>
-  
+
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="last-name"
@@ -63,7 +69,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div>
-  
+
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="last-name"
@@ -81,7 +87,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div>
-  
+
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="last-name"
@@ -99,7 +105,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div>
-              
+
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="last-name"
@@ -120,9 +126,7 @@ export default function EditProfile() {
                 <label
                   htmlFor="last-name"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                >
-                  
-                </label>
+                ></label>
                 <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <input
                     type="text"
@@ -136,9 +140,7 @@ export default function EditProfile() {
                 <label
                   htmlFor="last-name"
                   className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                >
-                  
-                </label>
+                ></label>
                 <div className="mt-1 sm:mt-0 sm:col-span-2">
                   <input
                     type="text"
@@ -149,7 +151,7 @@ export default function EditProfile() {
                   />
                 </div>
               </div>
-  
+
               <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
                 <label
                   htmlFor="last-name"
@@ -167,10 +169,9 @@ export default function EditProfile() {
                   />
                 </div>
               </div>
-  
             </div>
           </div>
-  
+
           <div className="divide-y divide-gray-200 pt-8 space-y-6 sm:pt-10 sm:space-y-5">
             <div>
               <h3 className="text-lg leading-6 font-semibold text-gray-900">
@@ -283,12 +284,19 @@ export default function EditProfile() {
             </div>
           </div>
         </div>
-  
+
         <div className="pt-5">
           <div className="flex justify-end">
             <button
               type="button"
-              className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              onClick={fnDeleteUser}
+              className="bg-white py-2 px-4 border border-red-300 rounded-md shadow-sm text-sm font-medium text-red-700 hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            >
+              Delete User
+            </button>
+            <button
+              type="button"
+              className="ml-3 bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
             >
               Cancel
             </button>

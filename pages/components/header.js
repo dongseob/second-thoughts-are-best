@@ -7,7 +7,6 @@ import {
   getAuth,
   signOut,
   onAuthStateChanged,
-  deleteUser,
 } from "firebase/auth";
 
 import { Fragment } from "react";
@@ -80,14 +79,7 @@ export default function Header() {
     if (window.confirm("로그아웃 처리 하시겠습니까?")) {
       signOut(auth)
         .then(() => {
-          //버그때문에 임시로 로그아웃될때, 계정삭제까지함.
-          // deleteUser(user).then(() => {
-          //   alert("로그아웃 처리 되었습니다.");
-          // }).catch((error) => {
-          //   const errorCode2 = error.code;
-          //   const errorMessage2 = error.message;
-          //   alert(errorMessage2);
-          // });
+          location.href = "/";
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -367,19 +359,51 @@ export default function Header() {
             <div className="py-6 px-5 space-y-6">
               <div>
                 <p className="text-sm font-medium text-gray-500">
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-gray-500 hover:line-through"
-                  >
-                    Sign in
-                  </a>
-                  &emsp;/&emsp;
-                  <a
-                    href="#"
-                    className="text-gray-600 hover:text-gray-500 hover:line-through"
-                  >
-                    Sign up
-                  </a>
+                  {isLogined === false ? (
+                    <>
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-gray-500 hover:line-through"
+                      >
+                        Sign in
+                      </a>
+                      &emsp;/&emsp;
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-gray-500 hover:line-through"
+                      >
+                        Sign up
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      <a
+                        href="#"
+                        onClick={logOut}
+                        className="text-gray-600 hover:text-gray-500 hover:line-through"
+                      >
+                        Sign out
+                      </a>
+                      &emsp;/&emsp;
+                      <Link href="/myPage">
+                        <a
+                          href="#"
+                          className="text-gray-600 hover:text-gray-500 hover:line-through"
+                        >
+                          Mypage
+                        </a>
+                      </Link>
+                      &emsp;/&emsp;
+                      <Link href="/myPage">
+                        <a
+                          href="#"
+                          className="text-gray-600 hover:text-gray-500 hover:line-through"
+                        >
+                          Cart
+                        </a>
+                      </Link>
+                    </>
+                  )}
                 </p>
               </div>
             </div>

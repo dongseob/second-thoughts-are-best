@@ -45,20 +45,13 @@ function Main_bg() {
 
               <div className="section md:!w-2/4 w-full mx-auto">
                 <Image
-                  src={"/images/bg/RFC.jpg"}
+                  src={"/images/bg/toTheMoon2.jpg"}
                   alt={"test"}
                   width={1000}
                   height={1000}
                 ></Image>
               </div>
 
-              {/* <div
-                className="section"
-                style={{
-                  backgroundImage: "url('/images/bg/RFC.jpg')",
-                  backgroundSize: "cover",
-                }}
-              ></div> */}
               <div className="section fp-auto-height" id="waterMarkTarget">
                 <Footer></Footer>
               </div>

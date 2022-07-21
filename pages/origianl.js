@@ -5,6 +5,15 @@ import Link from "next/link";
 
 const products = [
   {
+    id: 3,
+    name: "AbyssalSerpent",
+    name2: "Abyssal Serpent 1/2 T-Shirt",
+    href: "#",
+    price: "KRW 38,000",
+    imageSrc: "/images/original/AbyssalSerpent/AbyssalSerpent1.png",
+    imageAlt: "AbyssalSerpent",
+  },
+  {
     id: 2,
     name: "Zeroize",
     name2: "Zeroize 1/2 T-Shirt",

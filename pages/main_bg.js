@@ -45,7 +45,7 @@ function Main_bg() {
 
               <div className="section md:!w-2/4 w-full mx-auto">
                 <Image
-                  src={"/images/bg/toTheMoon2.jpg"}
+                  src={"/images/bg/toTheMoon.jpg"}
                   alt={"test"}
                   width={1000}
                   height={1000}

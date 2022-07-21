@@ -33,7 +33,7 @@ function Main_bg() {
         render={({ state, fullpageApi }) => {
           return (
             <ReactFullpage.Wrapper>
-              <div className="section md:!w-2/4 w-full mx-auto overflow-hidden">
+              <div className="section md:!w-2/4 w-full mx-auto !overflow-hidden">
                 <Image
                   src={"/images/bg/abyssalSerpent.jpg"}
                   alt={"test"}
@@ -43,7 +43,7 @@ function Main_bg() {
                 ></Image>
               </div>
 
-              <div className="section md:!w-2/4 w-full mx-auto overflow-hidden">
+              <div className="section md:!w-2/4 w-full mx-auto !overflow-hidden">
                 <Image
                   src={"/images/bg/toTheMoon.jpg"}
                   alt={"test"}

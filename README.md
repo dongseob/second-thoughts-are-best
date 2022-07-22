@@ -38,8 +38,6 @@ Becoming a designer from an inspired place and participating in production.
 <br>
 
 ### Dung Eater
-![Dung Eater](/public/images/original/DungEater/DungEater2.png)
-
 ```
 모판의 저주
 대변 먹는 자가 죽이고 더럽힌
@@ -51,22 +49,24 @@ Becoming a designer from an inspired place and participating in production.
 영원히 저주받은 상태가 된다.
 틈새의 땅에서 가장 끔찍한 일 중 하나이다.
 ```
+![Dung Eater](/public/images/original/DungEater/DungEater2.png)
 
 ### Zeroize
-![Zeroize](/public/images/original/Zeroize/Zeroize2.png)
-
 ```
-역동적인 레이싱을 다룬듯 자동차 엔진과 서킷의 모습이 반복적으로 나온다.
+역동적인 레이싱을 다룬듯 자동차 엔진과 서킷의 
+모습이 반복적으로 나온다.
 등장하는 엔진은 페라리 550 Tipo F133A/C V12엔진
 르노삼성 자동차의 구형 SM5(1세대 모델) SM525V
 닛산의 V6엔진인 2500cc VQ25엔진이라고 한다.
 ```
+![Zeroize](/public/images/original/Zeroize/Zeroize2.png)
 
 ### Abyssal Serpent
-![Zeroize](/public/images/original/AbyssalSerpent/AbyssalSerpent2.png)
-
 ```
-먼 바다에 신령의 산에 거주하던 신들에게 때때로 악한 뱀이 나타나 행패를 부렸고
-그 때 신들이 바다를 휘저어 심연으로 보낸 용으로 지난 천 년동안 바다는 평화로웠지만
+먼 바다에 신령의 산에 거주하던 신들에게 때때로 
+악한 뱀이 나타나 행패를 부렸고
+그 때 신들이 바다를 휘저어 심연으로 보낸 
+용으로 지난 천 년동안 바다는 평화로웠지만
 어인 군단이 해안 마을을 점거하자 다시 나타나게 되었다.
 ```
+![Zeroize](/public/images/original/AbyssalSerpent/AbyssalSerpent2.png)

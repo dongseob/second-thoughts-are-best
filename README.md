@@ -39,119 +39,34 @@ Becoming a designer from an inspired place and participating in production.
 
 ### Dung Eater
 ![Dung Eater](/public/images/original/DungEater/DungEater2.png)
-{: width="20%" height="50%"}
 
 ```
-export function hex_to_rgb(colorValue) {
-  const c = colorValue.substring(1); // 색상 앞의 # 제거
-  const result_rgb = parseInt(c, 16); // rrggbb를 10진수로 변환
-
-  return [result_rgb, c];
-}
+모판의 저주
+대변 먹는 자가 죽이고 더럽힌
+사체에 생겨나는 저주.
+흉조의 뿔에 찔린 아물지 않은 고질병.
+대변 먹는 자는 사체를 모판으로 삼아
+저주를 키워낸다.
+그런 죽음은 황금 나무로 돌아가지 않고
+영원히 저주받은 상태가 된다.
+틈새의 땅에서 가장 끔찍한 일 중 하나이다.
 ```
 
-### RGB to Hex
+### Zeroize
+![Zeroize](/public/images/original/Zeroize/Zeroize2.png)
+
 ```
-export function rgb_to_hex(r, g, b) {
-  r = r.toString(16);
-  g = g.toString(16);
-  b = b.toString(16);
-
-  if (r.length == 1) r = "0" + r;
-  if (g.length == 1) g = "0" + g;
-  if (b.length == 1) b = "0" + b;
-
-  return r + g + b;
-}
+역동적인 레이싱을 다룬듯 자동차 엔진과 서킷의 모습이 반복적으로 나온다.
+등장하는 엔진은 페라리 550 Tipo F133A/C V12엔진
+르노삼성 자동차의 구형 SM5(1세대 모델) SM525V
+닛산의 V6엔진인 2500cc VQ25엔진이라고 한다.
 ```
 
-### RGB to HSL
+### Abyssal Serpent
+![Zeroize](/public/images/original/AbyssalSerpent/AbyssalSerpent2.png)
+
 ```
-export function rgb_to_hsl(r, g, b) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-
-  // Find greatest and smallest channel values
-  let cmin = Math.min(r, g, b),
-    cmax = Math.max(r, g, b),
-    delta = cmax - cmin,
-    h = 0,
-    s = 0,
-    l = 0;
-
-  if (delta == 0) h = 0;
-  // Red is max
-  else if (cmax == r) h = ((g - b) / delta) % 6;
-  // Green is max
-  else if (cmax == g) h = (b - r) / delta + 2;
-  // Blue is max
-  else h = (r - g) / delta + 4;
-
-  h = Math.round(h * 60);
-
-  // Make negative hues positive behind 360°
-  if (h < 0) h += 360;
-
-  l = (cmax + cmin) / 2;
-
-  // Calculate saturation
-  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-
-  // Multiply l and s by 100
-  s = +(s * 100).toFixed(1);
-  l = +(l * 100).toFixed(1);
-
-  h = Math.round(h);
-  s = Math.round(s);
-  l = Math.round(l);
-
-  return [h, s, l];
-}
-```
-
-### HSL to RGB
-```
-export function hsl_to_rgb(h, s, l) {
-  s /= 100;
-  l /= 100;
-
-  let c = (1 - Math.abs(2 * l - 1)) * s,
-    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
-    m = l - c / 2,
-    r = 0,
-    g = 0,
-    b = 0;
-
-  if (0 <= h && h < 60) {
-    r = c;
-    g = x;
-    b = 0;
-  } else if (60 <= h && h < 120) {
-    r = x;
-    g = c;
-    b = 0;
-  } else if (120 <= h && h < 180) {
-    r = 0;
-    g = c;
-    b = x;
-  } else if (180 <= h && h < 240) {
-    r = 0;
-    g = x;
-    b = c;
-  } else if (240 <= h && h < 300) {
-    r = x;
-    g = 0;
-    b = c;
-  } else if (300 <= h && h < 360) {
-    r = c;
-    g = 0;
-    b = x;
-  }
-  r = Math.round((r + m) * 255);
-  g = Math.round((g + m) * 255);
-  b = Math.round((b + m) * 255);
-
-  return [r, g, b];
-}
+먼 바다에 신령의 산에 거주하던 신들에게 때때로 악한 뱀이 나타나 행패를 부렸고
+그 때 신들이 바다를 휘저어 심연으로 보낸 용으로 지난 천 년동안 바다는 평화로웠지만
+어인 군단이 해안 마을을 점거하자 다시 나타나게 되었다.
 ```

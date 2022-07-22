@@ -1,34 +1,157 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# colorjo
 
-## Getting Started
 
-First, run the development server:
+## Document
 
-```bash
-npm run dev
-# or
-yarn dev
+Becoming a designer from an inspired place and participating in production.
+
+![Image Title](/public/images/ootb_second_thoughts_are_best.jpg)
+
+<p align="center">
+  <a href="https://second-thoughts-are-best.vercel.app/" target="_blank"><strong>Explore Page »</strong></a>
+</p>
+
+<p align="center">
+    <a href="mailto:jds3567@gmail.com" target="_blank">
+        jds3567@gmail.com.com
+    </a>
+</p>
+
+<br>
+
+## Status
+[![Github All Releases](https://img.shields.io/github/languages/count/dongseob/second-thoughts-are-best )]()<!-- 사용언어 수 -->
+[![Github All Releases](https://img.shields.io/github/languages/top/dongseob/second-thoughts-are-best )]()<!-- 최다사용언어 -->
+<!-- [![Github All Releases](https://img.shields.io/github/downloads/dongseob/second-thoughts-are-best/total)]()레포 다운로드 수 -->
+[![Github All Releases](https://img.shields.io/github/repo-size/dongseob/second-thoughts-are-best)]()<!-- 레포 사이즈 -->
+[![Github All Releases](https://img.shields.io/github/commit-activity/m/dongseob/second-thoughts-are-best)]()<!-- 달에 몇번 커밋했는지 -->
+[![Github All Releases](https://img.shields.io/github/last-commit/dongseob/second-thoughts-are-best)]()<!-- 마지막커밋 날짜 -->
+
+<br>
+
+## Content
+
+<Blockquote>
+  주로 게임과 영상에서 영향을 받아 제작합니다.
+</Blockquote>
+
+<br>
+
+### Dung Eater
+![Dung Eater](/public/images/original/DungEater/DungEater2.png)
+{: width="20%" height="50%"}
+
+```
+export function hex_to_rgb(colorValue) {
+  const c = colorValue.substring(1); // 색상 앞의 # 제거
+  const result_rgb = parseInt(c, 16); // rrggbb를 10진수로 변환
+
+  return [result_rgb, c];
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### RGB to Hex
+```
+export function rgb_to_hex(r, g, b) {
+  r = r.toString(16);
+  g = g.toString(16);
+  b = b.toString(16);
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  if (r.length == 1) r = "0" + r;
+  if (g.length == 1) g = "0" + g;
+  if (b.length == 1) b = "0" + b;
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+  return r + g + b;
+}
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### RGB to HSL
+```
+export function rgb_to_hsl(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
 
-## Learn More
+  // Find greatest and smallest channel values
+  let cmin = Math.min(r, g, b),
+    cmax = Math.max(r, g, b),
+    delta = cmax - cmin,
+    h = 0,
+    s = 0,
+    l = 0;
 
-To learn more about Next.js, take a look at the following resources:
+  if (delta == 0) h = 0;
+  // Red is max
+  else if (cmax == r) h = ((g - b) / delta) % 6;
+  // Green is max
+  else if (cmax == g) h = (b - r) / delta + 2;
+  // Blue is max
+  else h = (r - g) / delta + 4;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  h = Math.round(h * 60);
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  // Make negative hues positive behind 360°
+  if (h < 0) h += 360;
 
-## Deploy on Vercel
+  l = (cmax + cmin) / 2;
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  // Calculate saturation
+  s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  // Multiply l and s by 100
+  s = +(s * 100).toFixed(1);
+  l = +(l * 100).toFixed(1);
+
+  h = Math.round(h);
+  s = Math.round(s);
+  l = Math.round(l);
+
+  return [h, s, l];
+}
+```
+
+### HSL to RGB
+```
+export function hsl_to_rgb(h, s, l) {
+  s /= 100;
+  l /= 100;
+
+  let c = (1 - Math.abs(2 * l - 1)) * s,
+    x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
+    m = l - c / 2,
+    r = 0,
+    g = 0,
+    b = 0;
+
+  if (0 <= h && h < 60) {
+    r = c;
+    g = x;
+    b = 0;
+  } else if (60 <= h && h < 120) {
+    r = x;
+    g = c;
+    b = 0;
+  } else if (120 <= h && h < 180) {
+    r = 0;
+    g = c;
+    b = x;
+  } else if (180 <= h && h < 240) {
+    r = 0;
+    g = x;
+    b = c;
+  } else if (240 <= h && h < 300) {
+    r = x;
+    g = 0;
+    b = c;
+  } else if (300 <= h && h < 360) {
+    r = c;
+    g = 0;
+    b = x;
+  }
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
+
+  return [r, g, b];
+}
+```
